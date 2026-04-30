@@ -1,0 +1,52 @@
+</style>
+
+
+<section class="stark">
+  <div class="wrap stark__inner">
+    <p class="stark__eyebrow">so here's what we do</p>
+    <h2 class="stark__word">RECORD<span class="dot">.</span></h2>
+    <p class="stark__caption">
+      computer screens or camera activity.<br/>
+      we watch how your best people work —<br/>
+      then train everyone else.
+    </p>
+  </div>
+</section>
+
+<section class="scene js-scene" aria-label="Office chaos, then the chat teach-through">
+  <div class="scene__stage">
+
+    <div class="scene__lead">
+      <h2 class="scene__lead-word">NOW WATCH<span class="dot">.</span></h2>
+      <p class="scene__lead-caption">Let your new hire understand senior's work</p>
+    </div>
+
+    <div class="scene__frame">
+      <div class="screen screen--watch" style="aspect-ratio: 2730 / 2080; --split: 59.71%;">
+
+        <div class="screen__work" aria-hidden="true">
+          <img src="assets/learn-left-pabel.png" alt="" />
+        </div>
+
+        <div class="screen__divider" aria-hidden="true"></div>
+
+        <div class="screen__chat">
+          <img src="assets/learn-right-panel.png" alt="" class="img-base" />
+          <img src="assets/zoomin blur.png" alt="" class="img-blur" />
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="scene js-scene" aria-label="Office chaos, then the chat teach-through">
+  <div class="scene__stage">
+
+    <div class="scene__lead">
+      <h2 class="scene__lead-word">NOW TEACH<span class="dot">.</span></h2>
+      <p class="scene__lead-caption">Let your new hire understand senior's work</p>
+    </div>
+
+    <div class="scene__frame">
+      <div class="screen">

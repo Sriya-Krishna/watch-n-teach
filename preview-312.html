@@ -1,0 +1,539 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>RIB · Slides 4–5–6 preview (image-based chat)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@10..48,75..100,300..800&family=Caveat:wght@400;700&family=Instrument+Serif:ital@0;1&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: #faf5e8;
+    --ink: #0d0d0d;
+  }
+  *{ box-sizing: border-box; }
+  html, body{
+    margin: 0;
+    padding: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  }
+  /* Stand-in for the work-panel screenshot. Replace with the real
+     screenshot when copying back to index.html. */
+  .screen__work.is-placeholder{ background: linear-gradient(#e8e2cf, #d8d2bf); }
+  .screen__work.is-placeholder img{ display: none !important; }
+  .screen__work.is-placeholder::before{
+    content: "office workflow · screenshot";
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    font-family: "Space Mono", monospace;
+    font-size: 0.9rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(0,0,0,0.25);
+  }
+  .hint{
+    position: fixed;
+    top: 16px; left: 50%;
+    transform: translateX(-50%);
+    font-family: "Space Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(0,0,0,0.45);
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 999px;
+    padding: 6px 14px;
+    z-index: 100;
+    pointer-events: none;
+    transition: opacity .3s ease;
+  }
+  body.scrolled .hint{ opacity: 0; }
+</style>
+</head>
+<body>
+<div class="hint">scroll ↓ to zoom into the chat</div>
+
+<style>
+:root{
+  --paper: #faf5e8;
+  --paper-2: #f0ead6;
+  --ink: #0d0d0d;
+  --ink-2: #1a1a1a;
+  --ink-soft: #6b6558;
+  --lime: #d4ff3a;
+  --pink: #ff3d8a;
+  --pink-2: #d61f6d;
+  --blue: #2b45ff;
+  --yellow: #ffd600;
+  --fs-xl: clamp(2.2rem, 9vw, 6.5rem);
+  --font-display: "Bricolage Grotesque", "Helvetica Neue", sans-serif;
+  --font-serif: "Instrument Serif", "Iowan Old Style", Georgia, serif;
+  --font-mono: "Space Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-hand: "Caveat", "Comic Sans MS", cursive;
+  --gutter: clamp(1.1rem, 4vw, 3rem);
+}
+
+.stark{
+  background: var(--paper);
+  padding: clamp(7rem, 20vh, 13rem) var(--gutter);
+  min-height: 85dvh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+.stark__inner{ text-align: center; margin-inline: auto; }
+.stark__eyebrow{
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  opacity: .55;
+  margin: 0 0 clamp(1.5rem, 4vh, 2.5rem);
+}
+.stark__word{
+  font-family: var(--font-display);
+  font-variation-settings: "wdth" 75, "wght" 800, "opsz" 96;
+  font-size: clamp(4.5rem, 24vw, 15rem);
+  line-height: 0.85;
+  letter-spacing: -0.06em;
+  text-transform: uppercase;
+  margin: 0;
+  color: var(--ink);
+  position: relative;
+  display: inline-block;
+}
+.stark__word .dot{ color: var(--pink); }
+.stark__word::after{
+  content: "";
+  position: absolute;
+  bottom: .1em; left: -.05em;
+  width: 1.1em; height: .12em;
+  background: var(--lime);
+  z-index: -1;
+  transform: rotate(-2deg);
+}
+.stark__caption{
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.6rem, 3.6vw, 2.3rem);
+  line-height: 1.35;
+  color: var(--ink-2);
+  max-width: 32ch;
+  margin: clamp(2rem, 5vh, 3rem) auto 0;
+  letter-spacing: -0.012em;
+}
+
+.scene{
+  --p: 0;
+  --p-zoom: 0;
+  position: relative;
+  height: 320dvh;
+  background: var(--paper);
+}
+.scene__stage{
+  position: sticky;
+  top: 0;
+  height: 100dvh;
+  overflow: hidden;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  padding: 0 clamp(8px, 3vw, 20px) 5vh !important;
+}
+
+.scene__lead {
+  text-align: center;
+  margin-bottom: clamp(4rem, 15vh, 10rem);
+  opacity: calc(1 - var(--p-zoom) * 2);
+  pointer-events: none;
+  will-change: opacity;
+}
+
+.scene__lead-word {
+  font-family: var(--font-display);
+  font-variation-settings: "wdth" 75, "wght" 800, "opsz" 96;
+  font-size: clamp(2.5rem, 12vw, 8.5rem);
+  line-height: 0.85;
+  letter-spacing: -0.06em;
+  text-transform: uppercase;
+  margin: 0;
+  color: var(--ink);
+  position: relative;
+  display: inline-block;
+}
+.scene__lead-word .dot { color: var(--pink); }
+.scene__lead-word::after {
+  content: "";
+  position: absolute;
+  bottom: .1em; left: -.05em;
+  width: 1.1em; height: .12em;
+  background: var(--lime);
+  z-index: -1;
+  transform: rotate(-2deg);
+}
+
+.scene__lead-caption {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  opacity: .55;
+  margin: clamp(1rem, 2vh, 1.5rem) 0 0;
+  max-width: 40ch;
+  margin-inline: auto;
+}
+
+.scene__frame{
+  width: 100%;
+  max-width: calc(85dvh * 16 / 9);
+  will-change: transform;
+}
+
+.screen{
+  --split: 70%;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  position: relative;
+  border: 2px solid rgba(13, 13, 13, calc(1 - var(--p-zoom) * 0.5));
+  border-radius: 10px;
+  box-shadow: 6px 6px 0 rgba(13, 13, 13, calc(1 - var(--p-zoom) * 0.5));
+  overflow: visible;
+}
+.screen--watch{
+  --split: 60%;
+}
+
+.screen__work{
+  position: absolute;
+  inset: 0 calc(100% - var(--split)) 0 0;
+  overflow: hidden;
+  border-radius: 9px 0 0 9px;
+  background: var(--paper);
+  opacity: calc(1 - var(--p-zoom) * 0.5);
+}
+.screen__work img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+
+.screen__divider{
+  position: absolute;
+  left: var(--split);
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background: var(--ink);
+  opacity: calc(1 - var(--p-zoom) * 0.5);
+}
+
+.screen__chat{
+  position: absolute;
+  inset: 0 0 0 var(--split);
+  border-radius: 0 9px 9px 0;
+  background: #ecebe4;
+  overflow: hidden;
+  z-index: 4;
+  transform-origin: center center;
+  transform:
+    translate(
+      calc(var(--p-zoom) * var(--chat-tx, 0px)),
+      calc(var(--p-zoom) * var(--chat-ty, 0px))
+    )
+    scale(calc(1 + var(--p-zoom) * var(--chat-scale, 0)));
+}
+.screen__chat img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.screen__chat .img-blur{
+  opacity: calc(var(--p-zoom) * 50);
+}
+
+.sub{
+  padding: clamp(5rem, 14vh, 10rem) var(--gutter);
+  background: var(--ink);
+  color: var(--paper);
+  position: relative;
+  overflow: hidden;
+}
+.sub::before{
+  content: "RIB · RIB · RIB · RIB · RIB · RIB · RIB · RIB · RIB · RIB · ";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  white-space: nowrap;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: .3em;
+  color: var(--lime);
+  padding: .6rem 0;
+  border-bottom: 1px solid rgba(212,255,58,.2);
+  animation: scroll-x 20s linear infinite;
+}
+@keyframes scroll-x{ to{ transform: translateX(-25%); } }
+
+.sub__big{
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+  font-variation-settings: "wdth" 85, "wght" 700, "opsz" 96;
+  text-transform: uppercase;
+  margin: 0;
+  max-width: 22ch;
+}
+.sub__big .line{ display: block; }
+.sub__big .line--lime{ color: var(--lime); }
+.sub__big .line--serif{
+  font-family: var(--font-serif);
+  font-style: italic;
+  text-transform: lowercase;
+  font-weight: 400;
+  font-size: 1.05em;
+  color: var(--pink);
+  letter-spacing: -0.02em;
+}
+.sub__tag{
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--lime);
+  margin-bottom: 1.5rem;
+  display: inline-flex; align-items: center; gap: .5rem;
+}
+.sub__tag::before{ content: "→"; color: var(--pink); }
+.sub__ai{ position: relative; display: inline-block; padding: 0 0.15em; }
+.sub__ai svg{
+  position: absolute;
+  inset: -32% -40%;
+  width: 180%;
+  height: 164%;
+  pointer-events: none;
+  overflow: visible;
+}
+.sub__ai svg path{
+  stroke: var(--blue);
+  stroke-width: 3.5;
+  fill: none;
+  stroke-linecap: round;
+  stroke-dasharray: 420;
+  stroke-dashoffset: 420;
+  animation: loopCircle 2s ease-in-out infinite;
+}
+@keyframes loopCircle{
+  0%   { stroke-dashoffset: 420; }
+  55%  { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: -420; }
+}
+.sub__note{
+  position: absolute;
+  bottom: clamp(2rem, 7vh, 5rem);
+  right: var(--gutter);
+  max-width: 14rem;
+  font-family: var(--font-hand);
+  font-size: 1.3rem;
+  line-height: 1.2;
+  color: var(--yellow);
+  transform: rotate(-3deg);
+  padding: .6rem .8rem;
+  border: 1.5px dashed rgba(255,214,0,.5);
+}
+@media (max-width: 640px){
+  .sub__note{ position: static; margin-top: 2rem; max-width: 100%; transform: none; display: inline-block; }
+}
+</style>
+
+
+<section class="stark">
+  <div class="wrap stark__inner">
+    <p class="stark__eyebrow">so here's what we do</p>
+    <h2 class="stark__word">RECORD<span class="dot">.</span></h2>
+    <p class="stark__caption">
+      computer screens or camera activity.<br/>
+      we watch how your best people work —<br/>
+      then train everyone else.
+    </p>
+  </div>
+</section>
+
+<section class="scene js-scene" aria-label="Office chaos, then the chat teach-through">
+  <div class="scene__stage">
+
+    <div class="scene__lead">
+      <h2 class="scene__lead-word">NOW WATCH<span class="dot">.</span></h2>
+      <p class="scene__lead-caption">Let your new hire understand senior's work</p>
+    </div>
+
+    <div class="scene__frame">
+      <div class="screen screen--watch" style="aspect-ratio: 2730 / 2080; --split: 59.71%;">
+
+        <div class="screen__work" aria-hidden="true">
+          <img src="assets/learn-left-pabel.png" alt="" />
+        </div>
+
+        <div class="screen__divider" aria-hidden="true"></div>
+
+        <div class="screen__chat">
+          <img src="assets/learn-right-panel.png" alt="" class="img-base" />
+          <img src="assets/zoomin blur.png" alt="" class="img-blur" />
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="scene js-scene" aria-label="Office chaos, then the chat teach-through">
+  <div class="scene__stage">
+
+    <div class="scene__lead">
+      <h2 class="scene__lead-word">NOW TEACH<span class="dot">.</span></h2>
+      <p class="scene__lead-caption">Let your new hire understand senior's work</p>
+    </div>
+
+    <div class="scene__frame">
+      <div class="screen">
+
+        <div class="screen__work" aria-hidden="true">
+          <img src="assets/screenshot teach work.jpg" alt="" />
+        </div>
+
+        <div class="screen__divider" aria-hidden="true"></div>
+
+        <div class="screen__chat">
+          <img src="assets/teach chat panel.png" alt="RIB chat panel showing Katie's recorded workflow" />
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="sub">
+  <div class="wrap">
+    <div class="sub__tag">the pitch, in one breath</div>
+    <h2 class="sub__big">
+      <span class="line">our <span class="sub__ai">AI<svg viewBox="0 0 120 70" preserveAspectRatio="none" aria-hidden="true"><path d="M60 4 Q14 6, 8 34 Q10 64, 60 66 Q112 64, 114 36 Q110 6, 60 4 L66 2" /></svg></span></span>
+      <span class="line line--serif">will record how</span>
+      <span class="line line--lime">your best people work.</span>
+      <span class="line line--serif">then walk every new&nbsp;hire</span>
+      <span class="line line--lime">till they feel confident.</span>
+    </h2>
+    <div class="sub__note">
+      yes that's it. the rest of the page is us showing our work.
+    </div>
+  </div>
+</section>
+
+
+<script>
+function initSceneZoom(){
+  const scenes = document.querySelectorAll('.js-scene');
+  if(!scenes.length) return;
+
+  scenes.forEach(scene => {
+    const stage = scene.querySelector('.scene__stage');
+    const chat  = scene.querySelector('.screen__chat');
+    if(!chat || !stage) return;
+
+    // Temporarily remove zoom to measure the base bounding box accurately
+    const prevZoom = scene.style.getPropertyValue('--p-zoom');
+    scene.style.setProperty('--p-zoom', '0');
+
+    const r = chat.getBoundingClientRect();
+    const stageRect = stage.getBoundingClientRect();
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+
+    // Restore the current zoom progress
+    scene.style.setProperty('--p-zoom', prevZoom || '0');
+
+    // Calculate position relative to the sticky stage
+    const idealLeft = r.left - stageRect.left;
+    const idealTop  = r.top - stageRect.top;
+
+    // Calculate the target scale to fit 80% of the screen limits
+    const scaleX = (vw * 0.8) / r.width;
+    const scaleY = (vh * 0.8) / r.height;
+
+    // Math.min forces it to stop scaling when it hits the 80% boundary
+    const targetScale = Math.min(scaleX, scaleY);
+    const scaleExtra = targetScale - 1;
+
+    // Calculate exact pixel translations to center it
+    const txPx = (vw / 2) - (idealLeft + r.width / 2);
+    const tyPx = (vh / 2) - (idealTop + r.height / 2);
+
+    // Notice we are setting these on the specific `scene` now, not the document root!
+    scene.style.setProperty('--chat-scale', scaleExtra.toFixed(4));
+    scene.style.setProperty('--chat-tx', txPx.toFixed(2) + 'px');
+    scene.style.setProperty('--chat-ty', tyPx.toFixed(2) + 'px');
+  });
+}
+
+initSceneZoom();
+window.addEventListener('resize', initSceneZoom, { passive: true });
+window.addEventListener('load',   initSceneZoom);
+
+const prefersReduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!prefersReduced){
+  const scenes = document.querySelectorAll('.js-scene');
+  if(scenes.length){
+    let ticking = false;
+    const update = () => {
+      scenes.forEach(scene => {
+        const rect  = scene.getBoundingClientRect();
+        const vh    = window.innerHeight;
+        const total = rect.height - vh;
+
+        // Calculate overall scroll progress (0 to 1) for this specific scene
+        const p = total > 0 ? Math.max(0, Math.min(1, (-rect.top) / total)) : 0;
+
+        // Directly map the scroll progress to the zoom
+        scene.style.setProperty('--p', p.toFixed(4));
+        scene.style.setProperty('--p-zoom', p.toFixed(4));
+      });
+      ticking = false;
+    };
+
+    const onScroll = () => {
+      if(!ticking){ requestAnimationFrame(update); ticking = true; }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', update,   { passive: true });
+    update();
+  }
+}
+
+window.addEventListener('scroll', () => {
+  document.body.classList.add('scrolled');
+}, { once: true, passive: true });
+</script>
+</body>
+</html>

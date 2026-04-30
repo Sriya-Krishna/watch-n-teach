@@ -1,0 +1,76 @@
+      <span class="line line--serif">then walk every new&nbsp;hire</span>
+      <span class="line line--lime">till they feel confident.</span>
+    </h2>
+    <div class="sub__note">
+      yes that's it. the rest of the page is us showing our work.
+    </div>
+  </div>
+</section>
+
+
+<script>
+function initSceneZoom(){
+  const scenes = document.querySelectorAll('.js-scene');
+  if(!scenes.length) return;
+
+  scenes.forEach(scene => {
+    const stage = scene.querySelector('.scene__stage');
+    const chat  = scene.querySelector('.screen__chat');
+    if(!chat || !stage) return;
+
+    // Temporarily remove zoom to measure the base bounding box accurately
+    const prevZoom = scene.style.getPropertyValue('--p-zoom');
+    scene.style.setProperty('--p-zoom', '0');
+
+    const r = chat.getBoundingClientRect();
+    const stageRect = stage.getBoundingClientRect();
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+
+    // Restore the current zoom progress
+    scene.style.setProperty('--p-zoom', prevZoom || '0');
+
+    // Calculate position relative to the sticky stage
+    const idealLeft = r.left - stageRect.left;
+    const idealTop  = r.top - stageRect.top;
+
+    // Calculate the target scale to fit 80% of the screen limits
+    const scaleX = (vw * 0.8) / r.width;
+    const scaleY = (vh * 0.8) / r.height;
+
+    // Math.min forces it to stop scaling when it hits the 80% boundary
+    const targetScale = Math.min(scaleX, scaleY);
+    const scaleExtra = targetScale - 1;
+
+    // Calculate exact pixel translations to center it
+    const txPx = (vw / 2) - (idealLeft + r.width / 2);
+    const tyPx = (vh / 2) - (idealTop + r.height / 2);
+
+    // Notice we are setting these on the specific `scene` now, not the document root!
+    scene.style.setProperty('--chat-scale', scaleExtra.toFixed(4));
+    scene.style.setProperty('--chat-tx', txPx.toFixed(2) + 'px');
+    scene.style.setProperty('--chat-ty', tyPx.toFixed(2) + 'px');
+  });
+}
+
+initSceneZoom();
+window.addEventListener('resize', initSceneZoom, { passive: true });
+window.addEventListener('load',   initSceneZoom);
+
+const prefersReduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!prefersReduced){
+  const scenes = document.querySelectorAll('.js-scene');
+  if(scenes.length){
+    let ticking = false;
+    const update = () => {
+      scenes.forEach(scene => {
+        const rect  = scene.getBoundingClientRect();
+        const vh    = window.innerHeight;
+        const total = rect.height - vh;
+
+        // Calculate overall scroll progress (0 to 1) for this specific scene
+        const p = total > 0 ? Math.max(0, Math.min(1, (-rect.top) / total)) : 0;
+
+        // Directly map the scroll progress to the zoom
+        scene.style.setProperty('--p', p.toFixed(4));
+        scene.style.setProperty('--p-zoom', p.toFixed(4));

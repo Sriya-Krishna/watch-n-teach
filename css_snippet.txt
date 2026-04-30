@@ -1,0 +1,136 @@
+.scene{
+  --p: 0;
+  --p-zoom: 0;
+  position: relative;
+  height: 320dvh;
+  background: var(--paper);
+}
+.scene__stage{
+  position: sticky;
+  top: 0;
+  height: 100dvh;
+  overflow: hidden;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  padding: 0 clamp(8px, 3vw, 20px) 5vh !important;
+}
+
+.scene__lead {
+  text-align: center;
+  margin-bottom: clamp(4rem, 15vh, 10rem);
+  opacity: calc(1 - var(--p-zoom) * 2);
+  pointer-events: none;
+  will-change: opacity;
+}
+
+.scene__lead-word {
+  font-family: var(--font-display);
+  font-variation-settings: "wdth" 75, "wght" 800, "opsz" 96;
+  font-size: clamp(2.5rem, 12vw, 8.5rem);
+  line-height: 0.85;
+  letter-spacing: -0.06em;
+  text-transform: uppercase;
+  margin: 0;
+  color: var(--ink);
+  position: relative;
+  display: inline-block;
+}
+.scene__lead-word .dot { color: var(--pink); }
+.scene__lead-word::after {
+  content: "";
+  position: absolute;
+  bottom: .1em; left: -.05em;
+  width: 1.1em; height: .12em;
+  background: var(--lime);
+  z-index: -1;
+  transform: rotate(-2deg);
+}
+
+.scene__lead-caption {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  opacity: .55;
+  margin: clamp(1rem, 2vh, 1.5rem) 0 0;
+  max-width: 40ch;
+  margin-inline: auto;
+}
+
+.scene__frame{
+  width: 100%;
+  max-width: calc(85dvh * 16 / 9);
+  will-change: transform;
+}
+
+.screen{
+  --split: 70%;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  position: relative;
+  border: 2px solid rgba(13, 13, 13, calc(1 - var(--p-zoom) * 0.5));
+  border-radius: 10px;
+  box-shadow: 6px 6px 0 rgba(13, 13, 13, calc(1 - var(--p-zoom) * 0.5));
+  overflow: visible;
+}
+.screen--watch{
+  --split: 60%;
+}
+
+.screen__work{
+  position: absolute;
+  inset: 0 calc(100% - var(--split)) 0 0;
+  overflow: hidden;
+  border-radius: 9px 0 0 9px;
+  background: var(--paper);
+  opacity: calc(1 - var(--p-zoom) * 0.5);
+}
+.screen__work img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+
+.screen__divider{
+  position: absolute;
+  left: var(--split);
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background: var(--ink);
+  opacity: calc(1 - var(--p-zoom) * 0.5);
+}
+
+.screen__chat{
+  position: absolute;
+  inset: 0 0 0 var(--split);
+  border-radius: 0 9px 9px 0;
+  background: #ecebe4;
+  overflow: hidden;
+  z-index: 4;
+  transform-origin: center center;
+  transform:
+    translate(
+      calc(var(--p-zoom) * var(--chat-tx, 0px)),
+      calc(var(--p-zoom) * var(--chat-ty, 0px))
+    )
+    scale(calc(1 + var(--p-zoom) * var(--chat-scale, 0)));
+}
+.screen__chat img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
