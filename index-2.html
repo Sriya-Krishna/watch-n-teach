@@ -917,14 +917,6 @@ section{ position: relative; }
   transform: rotate(-2deg);
 }
 
-.flip-word{
-  display: inline-block;
-  background: var(--pink);
-  padding: 0 .15em;
-  animation: knowledgeFlip 2s ease-in-out infinite;
-  transform-origin: center center;
-}
-
 .scene__lead-caption {
   font-family: var(--font-mono);
   font-size: 0.72rem;
@@ -1508,10 +1500,10 @@ section{ position: relative; }
   <div class="chapter__inner">
     <div class="chapter__num reveal">ch.01 — the invisible asset</div>
     <h2 class="chapter__head reveal d1">
-      your employees hold <em>deep, custom</em> <span class="hi hi--flip">knowledge</span> — the kind only your business has.
+      your seniors hold <em>knowledge</em> no <span class="hi hi--flip">textbook</span> covers.
     </h2>
     <p class="chapter__sub reveal d2">
-      no textbook covers it. no onboarding deck captures it. when seniors walk out, it walks out with them — and the next hire starts from zero. again.
+      when they walk out, it walks out with them. the next hire starts from zero.
     </p>
   </div>
 </section>
@@ -1580,9 +1572,7 @@ section{ position: relative; }
     <p class="stark__eyebrow">so here's what we do</p>
     <h2 class="stark__word">RECORD<span class="dot">.</span></h2>
     <p class="stark__caption">
-      computer screens or camera activity.<br/>
-      we watch how your best people work —<br/>
-      then train everyone else.
+      screens, cameras — we watch how your best people work.
     </p>
   </div>
 </section>
@@ -1592,8 +1582,8 @@ section{ position: relative; }
   <div class="scene__stage">
 
     <div class="scene__lead">
-      <h2 class="scene__lead-word">WATCH<span class="dot">.</span> ASK<span class="dot">.</span></h2>
-      <p>Not just Dumb Watching. </p><p> <span class="flip-word">Learn</span> why a decision is taken</p>
+      <h2 class="scene__lead-word">ASK<span class="dot">.</span></h2>
+      <p class="scene__lead-caption">we catch what a recorder misses.</p>
     </div>
 
     <div class="scene__frame">
@@ -1619,8 +1609,8 @@ section{ position: relative; }
   <div class="scene__stage">
 
     <div class="scene__lead">
-      <h2 class="scene__lead-word">NOW TEACH<span class="dot">.</span></h2>
-      <p class="scene__lead-caption">Let your new hire understand senior's work</p>
+      <h2 class="scene__lead-word">TEACH<span class="dot">.</span></h2>
+      <p class="scene__lead-caption">we walk new hires through it — step by step</p>
     </div>
 
     <div class="scene__frame">
@@ -1641,23 +1631,6 @@ section{ position: relative; }
   </div>
 </section>
 
-<!-- ===================== SUB-HOOK ===== -->
-<section class="sub">
-  <div class="wrap">
-    <div class="sub__tag">the pitch, in one breath</div>
-    <h2 class="sub__big">
-      <span class="line">our <span class="sub__ai">AI<svg viewBox="0 0 120 70" preserveAspectRatio="none" aria-hidden="true"><path d="M60 4 Q14 6, 8 34 Q10 64, 60 66 Q112 64, 114 36 Q110 6, 60 4 L66 2" /></svg></span></span>
-      <span class="line line--serif">will record how</span>
-      <span class="line line--lime">your best people work.</span>
-      <span class="line line--serif">then walk every new&nbsp;hire</span>
-      <span class="line line--lime">till they feel confident.</span>
-    </h2>
-    <div class="sub__note">
-      yes that's it. the rest of the page is us showing our work.
-    </div>
-  </div>
-</section>
-
 <!-- ===================== CHAPTER 02 ===== -->
 <section class="chapter js-chapter" data-bg="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1800&q=80&auto=format&fit=crop">
   <div class="chapter__bg"></div>
@@ -1667,10 +1640,10 @@ section{ position: relative; }
   <div class="chapter__inner">
     <div class="chapter__num reveal" style="background: var(--pink); color: var(--paper);">ch.02 — handholding</div>
     <h2 class="chapter__head reveal d1">
-      Empower your <em>new&nbsp;hire</em>, to solve <span class="hi">senior</span> problems on day one.
+      your <em>new&nbsp;hire</em>, solving <span class="hi">senior</span> problems on day one.
     </h2>
     <p class="chapter__sub reveal d2">
-      not a static doc. not a video they skip. a live guide that knows the senior's exact playbook — and stays next to them until they don't need it.
+      not a static doc. not a video they skip. a live guide that stays next to them until they don't need it.
     </p>
   </div>
 </section>
@@ -1684,8 +1657,7 @@ section{ position: relative; }
       <div><span class="beat__n-badge">i</span></div>
       <div>
         <h3 class="beat__h">stop redoing <em>old work</em>.</h3>
-        <p class="beat__p">every team has super-workflows their best people invented. most of them die on a laptop when that person leaves. we let the rest of the team <mark>steal those workflows</mark> — the good kind of stealing.</p>
-        <div class="beat__handnote">(the best promotion tool you've ever seen)</div>
+        <p class="beat__p">every team has workflows the best people invented. most die when those people leave. we let the rest of the team <mark>steal them</mark>.</p>
       </div>
     </div>
 
@@ -1693,17 +1665,15 @@ section{ position: relative; }
       <div><span class="beat__n-badge">ii</span></div>
       <div>
         <h3 class="beat__h"><em>the bonus</em>: a dataset <span class="hi">you own</span>.</h3>
-        <p class="beat__p">every interaction trains a private corpus of your company's real behavior — not scraped web junk. use it to train your own models, or wait until you're ready to. either way, <mark>it's yours</mark>.</p>
-        <div class="beat__handnote">no one else has this data. literally.</div>
+        <p class="beat__p">every interaction trains a private corpus of your company's real behavior. <mark>yours</mark>. not scraped web junk.</p>
       </div>
     </div>
 
     <div class="beat js-fade">
       <div><span class="beat__n-badge">iii</span></div>
       <div>
-        <h3 class="beat__h">be <em>ready</em> for the your agentic employee.</h3>
-        <p class="beat__p">the companies that own their <mark>intent</mark> — not just their data — will be the ones whose agents actually work. the rest will be retraining from scratch. again.</p>
-        <div class="beat__handnote">the future runs on intent, not clicks.</div>
+        <h3 class="beat__h">be <em>ready today</em> for the next agentic wave.</h3>
+        <p class="beat__p">the companies that own their <mark>intent</mark> — not just their data — will be the ones whose agents actually work.</p>
       </div>
     </div>
   </div>
