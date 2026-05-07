@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
 <meta name="theme-color" content="#faf5e8" />
-<title>MEMOS — your firm's AI brain. without replacing your best people.</title>
+<title>RIB — before your best people walk out</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -84,7 +84,7 @@ img, svg{ max-width: 100%; display: block; }
   html, body{
     cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='26' height='26' viewBox='0 0 26 26'><circle cx='13' cy='13' r='6' fill='%23d4ff3a' stroke='%230d0d0d' stroke-width='2'/></svg>") 13 13, auto;
   }
-  a, button, .clickable, input{
+  a, button, .clickable{
     cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'><circle cx='16' cy='16' r='12' fill='%23ff3d8a' stroke='%230d0d0d' stroke-width='2.5'/></svg>") 16 16, pointer;
   }
 }
@@ -192,12 +192,10 @@ section{ position: relative; }
 }
 .hero__top .dot-mark{
   display: inline-flex; align-items: center; gap: .45rem;
-  padding: .35rem .75rem;
+  padding: .35rem .65rem;
   background: var(--ink);
   color: var(--paper);
   border-radius: 99px;
-  font-weight: 700;
-  letter-spacing: 0.18em;
 }
 .hero__top .dot-mark::before{
   content: "";
@@ -205,17 +203,6 @@ section{ position: relative; }
   background: var(--lime);
   animation: blink 1.1s steps(2) infinite;
 }
-.hero__top .hero__tag-right{
-  justify-self: end;
-  font-style: italic;
-  font-family: var(--font-serif);
-  font-size: 0.95rem;
-  letter-spacing: 0.01em;
-  text-transform: none;
-  opacity: 0.7;
-}
-@media (max-width: 720px){ .hero__top .hero__tag-right{ display: none; } }
-
 .hero__top .hero__banner{
   font-family: var(--font-display);
   font-variation-settings: "wdth" 82, "wght" 780, "opsz" 96;
@@ -278,6 +265,7 @@ section{ position: relative; }
 .hero__head .w:nth-child(10){ animation-delay: .92s; }
 .hero__head .w:nth-child(11){ animation-delay: 1s; }
 
+/* plain-language subtitle — answers "what does this do" */
 .hero__explain{
   position: relative;
   z-index: 2;
@@ -288,7 +276,7 @@ section{ position: relative; }
   letter-spacing: -0.01em;
   text-transform: none;
   color: var(--ink);
-  max-width: 36ch;
+  max-width: 32ch;
   margin: clamp(-1rem, -2vh, -0.5rem) 0 clamp(2rem, 5vh, 3rem);
   opacity: 0;
   transform: translateY(14px);
@@ -309,7 +297,7 @@ section{ position: relative; }
 
 @keyframes wordIn{ to{ opacity: 1; transform: none; } }
 
-/* the critical word — the one we strike through */
+/* the critical word — "attrition" */
 .hero__hit{
   position: relative;
   font-family: var(--font-serif);
@@ -442,8 +430,6 @@ section{ position: relative; }
   background: var(--ink); color: var(--lime);
   border-radius: 4px;
   animation: nudge 1.4s ease-in-out infinite;
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
 }
 @keyframes nudge{ 0%,100%{ transform: translateY(0); } 50%{ transform: translateY(4px); } }
 .hero__meta{
@@ -465,7 +451,7 @@ section{ position: relative; }
   overflow: hidden;
 }
 .sub::before{
-  content: "MEMOS · MEMOS · MEMOS · MEMOS · MEMOS · MEMOS · MEMOS · MEMOS · MEMOS · ";
+  content: "RIB · RIB · RIB · RIB · RIB · RIB · RIB · RIB · RIB · RIB · ";
   position: absolute;
   top: 0; left: 0; right: 0;
   white-space: nowrap;
@@ -478,6 +464,85 @@ section{ position: relative; }
   animation: scroll-x 20s linear infinite;
 }
 @keyframes scroll-x{ to{ transform: translateX(-25%); } }
+
+.sub__big{
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+  font-variation-settings: "wdth" 85, "wght" 700, "opsz" 96;
+  text-transform: uppercase;
+  margin: 0;
+  max-width: 22ch;
+}
+.sub__big .line{ display: block; }
+.sub__big .line--lime{ color: var(--lime); }
+.sub__big .line--serif{
+  font-family: var(--font-serif);
+  font-style: italic;
+  text-transform: lowercase;
+  font-weight: 400;
+  font-size: 1.05em;
+  color: var(--pink);
+  letter-spacing: -0.02em;
+}
+.sub__tag{
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--lime);
+  margin-bottom: 1.5rem;
+  display: inline-flex; align-items: center; gap: .5rem;
+}
+.sub__tag::before{
+  content: "→"; color: var(--pink);
+}
+.sub__ai{
+  position: relative;
+  display: inline-block;
+  padding: 0 0.15em;
+}
+.sub__ai svg{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 180%;
+  height: 164%;
+  transform: translate(-52%, -50%);
+  pointer-events: none;
+  overflow: visible;
+}
+.sub__ai svg path{
+  stroke: var(--blue);
+  stroke-width: 3.5;
+  fill: none;
+  stroke-linecap: round;
+  stroke-dasharray: 420;
+  stroke-dashoffset: 420;
+  animation: loopCircle 2s ease-in-out infinite;
+}
+@keyframes loopCircle{
+  0%   { stroke-dashoffset: 420; }
+  55%  { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: -420; }
+}
+.sub__note{
+  position: absolute;
+  bottom: clamp(2rem, 7vh, 5rem);
+  right: var(--gutter);
+  max-width: 14rem;
+  font-family: var(--font-hand);
+  font-size: 1.3rem;
+  line-height: 1.2;
+  color: var(--yellow);
+  transform: rotate(-3deg);
+  padding: .6rem .8rem;
+  border: 1.5px dashed rgba(255,214,0,.5);
+}
+@media (max-width: 640px){
+  .sub__note{ position: static; margin-top: 2rem; max-width: 100%; transform: none; display: inline-block; }
+}
 
 /* ==========================================================================
    CHAPTER (image-backed)
@@ -592,7 +657,7 @@ section{ position: relative; }
   font-variation-settings: "wdth" 95, "wght" 440, "opsz" 24;
   font-size: var(--fs-md);
   line-height: 1.45;
-  max-width: 42ch;
+  max-width: 36ch;
   color: rgba(250,245,232,.92);
 }
 .chapter__tape{
@@ -635,7 +700,7 @@ section{ position: relative; }
   line-height: 1;
   letter-spacing: -0.03em;
   text-transform: uppercase;
-  max-width: 28ch;
+  max-width: 26ch;
   padding-inline: var(--gutter);
   margin: 0 0 1.5rem;
 }
@@ -727,13 +792,13 @@ section{ position: relative; }
   color: var(--ink);
   padding-inline: var(--gutter);
   margin: 2rem 0 0;
-  max-width: 38ch;
+  max-width: 32ch;
   transform: rotate(-1deg);
   display: inline-block;
 }
 
 /* ==========================================================================
-   STARK
+   STARK — the quiet slide. One anchor word. A pause after slide 4's riot.
    ========================================================================== */
 .stark{
   background: var(--paper);
@@ -745,10 +810,12 @@ section{ position: relative; }
   position: relative;
   overflow: hidden;
 }
+
 .stark__inner{
   text-align: center;
   margin-inline: auto;
 }
+
 .stark__eyebrow{
   font-family: var(--font-mono);
   font-size: 0.72rem;
@@ -758,6 +825,7 @@ section{ position: relative; }
   opacity: .55;
   margin: 0 0 clamp(1.5rem, 4vh, 2.5rem);
 }
+
 .stark__word{
   font-family: var(--font-display);
   font-variation-settings: "wdth" 75, "wght" 800, "opsz" 96;
@@ -771,6 +839,7 @@ section{ position: relative; }
   display: inline-block;
 }
 .stark__word .dot{ color: var(--pink); }
+/* subtle lime streak under the word — carried over from before for continuity */
 .stark__word::after{
   content: "";
   position: absolute;
@@ -780,21 +849,23 @@ section{ position: relative; }
   z-index: -1;
   transform: rotate(-2deg);
 }
+
 .stark__caption{
   font-family: var(--font-serif);
   font-style: italic;
   font-weight: 400;
-  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-size: clamp(1.6rem, 3.6vw, 2.3rem);
   line-height: 1.35;
   color: var(--ink-2);
-  max-width: 38ch;
+  max-width: 32ch;
   margin: clamp(2rem, 5vh, 3rem) auto 0;
   letter-spacing: -0.012em;
 }
 
 /* ==========================================================================
-   SCENE — 16:9 computer-screen mockup. Left panel = work, right = chat.
-   On scroll the chat zooms in. --chat-tx / --chat-scale set by JS.
+   SCENE — 16:9 computer-screen mockup. Left 70% = screenshot, right 30% =
+   chat. On scroll the chat zooms in to fill the mobile viewport; the work
+   screenshot fades. --chat-tx / --chat-scale set by JS after first render.
    ========================================================================== */
 .scene{
   --p: 0;
@@ -822,6 +893,7 @@ section{ position: relative; }
   pointer-events: none;
   will-change: opacity;
 }
+
 .scene__lead-word {
   font-family: var(--font-display);
   font-variation-settings: "wdth" 75, "wght" 800, "opsz" 96;
@@ -844,6 +916,7 @@ section{ position: relative; }
   z-index: -1;
   transform: rotate(-2deg);
 }
+
 .flip-word{
   display: inline-block;
   background: var(--pink);
@@ -851,17 +924,17 @@ section{ position: relative; }
   animation: knowledgeFlip 2s ease-in-out infinite;
   transform-origin: center center;
 }
+
 .scene__lead-caption {
   font-family: var(--font-mono);
   font-size: 0.72rem;
-  letter-spacing: .22em;
+  letter-spacing: .28em;
   text-transform: uppercase;
   color: var(--ink-soft);
-  opacity: .65;
+  opacity: .55;
   margin: clamp(1rem, 2vh, 1.5rem) 0 0;
-  max-width: 60ch;
+  max-width: 40ch;
   margin-inline: auto;
-  line-height: 1.5;
 }
 
 .scene__frame{
@@ -880,7 +953,9 @@ section{ position: relative; }
   box-shadow: 6px 6px 0 rgba(13, 13, 13, calc(1 - var(--p-zoom) * 0.5));
   overflow: visible;
 }
-.screen--watch{ --split: 60%; }
+.screen--watch{
+  --split: 60%;
+}
 
 .screen__work{
   position: absolute;
@@ -890,6 +965,17 @@ section{ position: relative; }
   background: var(--paper);
   opacity: calc(1 - var(--p-zoom) * 0.5);
 }
+.screen__work img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 
 .screen__divider{
   position: absolute;
@@ -908,8 +994,6 @@ section{ position: relative; }
   background: #ecebe4;
   overflow: hidden;
   z-index: 4;
-  display: flex;
-  flex-direction: column;
   transform-origin: center center;
   transform:
     translate(
@@ -918,37 +1002,49 @@ section{ position: relative; }
     )
     scale(calc(1 + var(--p-zoom) * var(--chat-scale, 0)));
 }
+.screen__chat img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.screen__chat .img-blur{
+  opacity: calc(var(--p-zoom) * 50);
+}
 
-/* Chat chrome (uses fixed-pixel sizing scaled by viewport) */
+/* Chat chrome */
 .chat-chrome{
   flex-shrink: 0;
   display: flex;
   align-items: center;
-  gap: 4px;
-  padding: 4px 6px;
+  gap: 3px;
+  padding: 3px 5px;
   background: var(--paper);
   border-bottom: 0.5px solid var(--ink);
 }
-.chat-chrome .dots{ display: flex; gap: 3px; }
+.chat-chrome .dots{ display: flex; gap: 2px; }
 .chat-chrome .dots i{
-  display: block; width: 5px; height: 5px;
+  display: block; width: 4px; height: 4px;
   border-radius: 50%; border: 0.5px solid rgba(0,0,0,0.2);
 }
 .chat-chrome .dots i:nth-child(1){ background:#ff6057; }
 .chat-chrome .dots i:nth-child(2){ background:#ffbd2e; }
 .chat-chrome .dots i:nth-child(3){ background:#28ca42; }
 .chat-brand{
-  font-family: var(--font-display);
+  font-family: var(--display);
   font-weight: 800;
-  font-size: 0.5rem;
-  letter-spacing: 0.04em;
+  font-size: 0.32rem;
+  letter-spacing: -0.01em;
   color: var(--ink);
-  text-transform: uppercase;
 }
 .chat-title{
-  font-family: var(--font-serif);
+  font-family: var(--serif);
   font-style: italic;
-  font-size: 0.45rem;
+  font-size: 0.28rem;
   opacity: 0.65;
   flex: 1;
   overflow: hidden;
@@ -957,20 +1053,21 @@ section{ position: relative; }
   color: var(--ink);
 }
 .chat-status{
-  display: flex; align-items: center; gap: 3px;
-  font-family: var(--font-mono);
-  font-size: 0.36rem;
+  display: flex; align-items: center; gap: 2px;
+  font-family: var(--mono);
+  font-size: 0.22rem;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  opacity: 0.7;
+  letter-spacing: 0.05em;
+  opacity: 0.6;
 }
 .chat-status::before{
   content: ""; display: block;
-  width: 4px; height: 4px;
+  width: 3px; height: 3px;
   border-radius: 50%;
   background: var(--lime); border: 0.5px solid var(--ink);
 }
 
+/* Chat body */
 .chat-body{
   flex: 1;
   padding: clamp(8px, 1.5vw, 14px) clamp(7px, 1.2vw, 12px);
@@ -981,14 +1078,13 @@ section{ position: relative; }
   background: #fafaf5;
 }
 .cmsg{
-  max-width: 92%;
-  padding: 4px 6px;
+  max-width: 90%;
+  padding: 3px 5px;
   border: 0.5px solid var(--ink);
   border-radius: 5px;
-  font-family: var(--font-display);
-  font-variation-settings: "wdth" 100, "wght" 440, "opsz" 24;
-  font-size: 0.45rem;
-  line-height: 1.35;
+  font-family: var(--sans);
+  font-size: 0.28rem;
+  line-height: 1.3;
   color: var(--ink);
   box-shadow: 1px 1px 0 var(--ink);
 }
@@ -1002,408 +1098,74 @@ section{ position: relative; }
   background: #fff;
   border-bottom-left-radius: 3px;
 }
+
 .cmsg__who{
-  font-family: var(--font-mono);
-  font-size: 0.32rem;
+  font-family: var(--mono);
+  font-size: 0.45em;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  opacity: 0.55;
+  letter-spacing: 0.06em;
+  opacity: 0.5;
   margin-bottom: 3px;
-  font-weight: 700;
 }
 .cmsg__card{
-  margin-top: 4px;
-  padding: 3px 5px;
+  margin-top: 3px;
+  padding: 2px 4px;
   background: var(--paper);
   border: 0.5px solid var(--ink);
   border-radius: 3px;
   display: flex; align-items: center;
-  gap: 5px;
+  gap: 3px;
   box-shadow: 1px 1px 0 var(--ink);
 }
 .cmsg__card-icon{
   flex-shrink: 0;
-  width: 10px; height: 10px;
+  width: 8px; height: 8px;
   background: var(--pink);
   border: 0.5px solid var(--ink);
   border-radius: 2px;
   display: grid; place-items: center;
-  font-size: 0.32rem;
-  color: var(--paper);
-  font-weight: 700;
+  font-size: 0.2rem;
 }
 .cmsg__card-name{
-  font-family: var(--font-mono);
-  font-size: 0.36rem;
-  font-weight: 700;
-  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 0.25rem;
+  font-weight: 700; color: var(--ink);
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 .cmsg__card-meta{
-  font-family: var(--font-mono);
-  font-size: 0.3rem;
-  opacity: 0.55;
-  margin-top: 1px;
-  letter-spacing: 0.04em;
-}
-.cmsg__code{
-  margin-top: 4px;
-  padding: 2px 4px;
-  background: var(--ink);
-  color: var(--lime);
-  font-family: var(--font-mono);
-  font-size: 0.34rem;
-  border-radius: 2px;
-  letter-spacing: 0.02em;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  font-family: var(--mono);
+  font-size: 0.22rem;
+  opacity: 0.55; margin-top: 1px;
 }
 
+/* Chat input bar */
 .chat-input{
   flex-shrink: 0;
-  padding: 3px 5px;
+  height: 4px;
+  max-height: 4px;
+  overflow: hidden;
+  padding: 1px 3px;
   border-top: 0.5px solid var(--ink);
   background: var(--paper);
-  display: flex; align-items: center; gap: 4px;
+  display: flex; align-items: center; gap: 2px;
 }
 .chat-field{
   flex: 1;
-  height: 6px;
+  height: 2px;
   background: #fff;
   border: 0.5px solid var(--ink);
-  border-radius: 3px;
+  border-radius: 2px;
+  font-size: 0;
+  line-height: 0;
+  overflow: hidden;
 }
 .chat-send{
   flex-shrink: 0;
-  width: 8px; height: 8px;
-  background: var(--ink);
-  border-radius: 50%;
-}
-
-/* ==========================================================================
-   OS-MOCK — fake desktop with stacked windows, for SCENE 1 work panel
-   ========================================================================== */
-.os-mock{
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse at 25% 15%, rgba(212,255,58,.22), transparent 55%),
-    radial-gradient(ellipse at 75% 80%, rgba(255,61,138,.14), transparent 55%),
-    var(--paper-2);
-  overflow: hidden;
-  padding: 3% 4%;
-}
-.os-mock__win{
-  position: absolute;
-  background: #fff;
-  border: 1px solid var(--ink);
-  border-radius: 5px;
-  box-shadow: 3px 3px 0 var(--ink);
-  overflow: hidden;
-}
-.os-mock__win-bar{
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  padding: 4px 6px;
-  background: var(--paper);
-  border-bottom: 0.5px solid rgba(0,0,0,.25);
-}
-.os-mock__win-bar i{
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  display: block;
-}
-.os-mock__win-bar i:nth-child(1){ background: #ff6057; }
-.os-mock__win-bar i:nth-child(2){ background: #ffbd2e; }
-.os-mock__win-bar i:nth-child(3){ background: #28ca42; }
-.os-mock__win-title{
-  font-family: var(--font-mono);
-  font-size: 0.36rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-left: 6px;
-  opacity: 0.7;
-}
-.os-mock__win-body{
-  padding: 5px 7px;
-  font-size: 0.4rem;
-  line-height: 1.45;
-  font-family: var(--font-mono);
-  color: var(--ink);
-  height: calc(100% - 18px);
-  overflow: hidden;
-}
-
-/* placements — pseudo-3D stacked windows */
-.os-mock__win--excel{
-  top: 8%; left: 4%;
-  width: 56%; height: 46%;
-  transform: rotate(-1.4deg);
-  z-index: 1;
-}
-.os-mock__win--qbo{
-  top: 18%; left: 38%;
-  width: 56%; height: 50%;
-  transform: rotate(0.9deg);
-  z-index: 2;
-}
-.os-mock__win--pdf{
-  top: 50%; left: 8%;
-  width: 44%; height: 40%;
-  transform: rotate(-0.6deg);
-  z-index: 3;
-}
-.os-mock__win--mail{
-  top: 56%; left: 48%;
-  width: 46%; height: 38%;
-  transform: rotate(1.6deg);
-  z-index: 4;
-}
-
-/* Excel-like grid */
-.os-grid{
-  display: grid;
-  grid-template-columns: 24% 1fr 1fr 1fr;
-  gap: 1px;
-  background: rgba(0,0,0,.15);
-  font-size: 0.35rem;
-}
-.os-grid > *{ background: #fff; padding: 2px 4px; min-height: 9px; }
-.os-grid > .h{ background: #ebead8; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
-.os-grid > .num{ text-align: right; font-variant-numeric: tabular-nums; }
-.os-grid > .pos{ color: #1f7a44; }
-.os-grid > .neg{ color: #b62a2a; }
-
-/* QuickBooks-like ledger rows */
-.os-ledger-row{
-  display: flex;
-  justify-content: space-between;
-  padding: 2px 0;
-  border-bottom: 0.5px dotted rgba(0,0,0,.18);
-  font-size: 0.36rem;
-}
-.os-ledger-row .acc{ color: var(--pink-2); font-weight: 700; }
-.os-ledger-row .num{ font-variant-numeric: tabular-nums; }
-
-/* PDF-like document */
-.os-doc h6{
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 0.45rem;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  margin: 0 0 4px;
-}
-.os-doc .line{
-  height: 2px;
-  background: rgba(0,0,0,.15);
-  margin-bottom: 3px;
-  border-radius: 1px;
-}
-.os-doc .line.short{ width: 70%; }
-.os-doc .line.shorter{ width: 50%; }
-.os-doc .stamp{
-  display: inline-block;
-  margin-top: 4px;
-  padding: 1px 4px;
-  background: var(--pink);
-  color: var(--paper);
-  font-family: var(--font-mono);
-  font-size: 0.32rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  transform: rotate(-3deg);
-}
-
-/* Email-like list */
-.os-mail .em{
-  display: flex;
-  gap: 5px;
-  padding: 2px 0;
-  border-bottom: 0.5px dotted rgba(0,0,0,.18);
-  font-size: 0.36rem;
-}
-.os-mail .em .from{ font-weight: 700; min-width: 30%; }
-.os-mail .em .sub{ flex: 1; opacity: 0.7; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.os-mail .em .when{ font-family: var(--font-mono); font-size: 0.32rem; opacity: 0.5; }
-
-/* Watching badge — pulsing lime indicator */
-.os-mock__eye{
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  padding: 4px 9px 3px;
-  background: var(--ink);
-  color: var(--lime);
-  font-family: var(--font-mono);
-  font-size: 0.45rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  border-radius: 99px;
-  z-index: 20;
-  box-shadow: 2px 2px 0 var(--ink);
-  font-weight: 700;
-}
-.os-mock__eye::before{
-  content: "";
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background: var(--lime);
-  animation: blink 1.1s steps(2) infinite;
-  box-shadow: 0 0 4px var(--lime);
-}
-
-/* connecting dotted lines from the eye to each window */
-.os-mock__rays{
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 9;
-  width: 100%; height: 100%;
-}
-.os-mock__rays line{
-  stroke: var(--lime);
-  stroke-width: 1;
-  stroke-dasharray: 2 2;
-  opacity: 0.6;
-}
-
-/* ==========================================================================
-   FLOW-MOCK — workflow board for SCENE 2 work panel
-   ========================================================================== */
-.flow-mock{
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse at 80% 25%, rgba(43,69,255,.14), transparent 50%),
-    radial-gradient(ellipse at 20% 80%, rgba(212,255,58,.12), transparent 50%),
-    var(--paper-2);
-  padding: 4%;
-  overflow: hidden;
-  display: grid;
-  grid-template-columns: 28% 1fr 1fr 1fr;
-  grid-template-rows: auto;
-  gap: 2.5%;
-  align-items: start;
-}
-.flow-mock__sidebar{
-  background: var(--ink);
-  color: var(--paper);
-  border-radius: 5px;
-  padding: 7px 9px;
-  font-family: var(--font-mono);
-  font-size: 0.36rem;
-  line-height: 1.6;
-  letter-spacing: 0.04em;
-  box-shadow: 3px 3px 0 var(--ink);
-  height: 100%;
-  overflow: hidden;
-}
-.flow-mock__sidebar h4{
-  font-family: var(--font-display);
-  font-size: 0.5rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  margin: 0 0 6px;
-  color: var(--lime);
-}
-.flow-mock__sidebar .client{
-  font-family: var(--font-serif);
-  font-style: italic;
-  color: var(--lime);
-  font-size: 0.55rem;
-  margin: 0 0 6px;
-  letter-spacing: -0.01em;
-}
-.flow-mock__sidebar ul{
-  list-style: none;
-  padding: 0;
-  margin: 0 0 8px;
-}
-.flow-mock__sidebar li{
-  display: flex;
-  align-items: flex-start;
-  gap: 5px;
-  margin-bottom: 4px;
-  opacity: 0.85;
-  line-height: 1.35;
-}
-.flow-mock__sidebar li::before{
-  content: "✓";
-  color: var(--lime);
-  flex-shrink: 0;
-  font-weight: 700;
-}
-.flow-mock__sidebar .meta{
-  font-family: var(--font-mono);
-  font-size: 0.3rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  opacity: 0.55;
-  border-top: 0.5px solid rgba(255,255,255,0.2);
-  padding-top: 5px;
-  margin-top: 6px;
-}
-.flow-mock__col{
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-.flow-mock__col h5{
-  font-family: var(--font-mono);
-  font-size: 0.4rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  margin: 0 0 3px;
-  color: var(--ink);
-  opacity: 0.7;
-  font-weight: 700;
-}
-.flow-mock__card{
-  background: #fff;
-  border: 1px solid var(--ink);
-  border-radius: 4px;
-  padding: 5px 7px;
-  font-family: var(--font-display);
-  font-size: 0.4rem;
-  line-height: 1.35;
-  box-shadow: 1.5px 1.5px 0 var(--ink);
-  font-weight: 600;
-}
-.flow-mock__card--lime{ background: var(--lime); }
-.flow-mock__card--pink{ background: var(--pink); color: var(--paper); }
-.flow-mock__card--yellow{ background: var(--yellow); }
-.flow-mock__card .meta{
-  font-family: var(--font-mono);
-  font-size: 0.3rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  opacity: 0.7;
-  margin-top: 2px;
-  font-weight: 400;
-}
-.flow-mock__card .who{
-  display: flex;
-  align-items: center;
-  gap: 3px;
-  margin-top: 3px;
-  font-family: var(--font-mono);
-  font-size: 0.3rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  opacity: 0.6;
-}
-.flow-mock__card .who::before{
-  content: "";
   width: 5px; height: 5px;
-  border-radius: 50%;
   background: var(--ink);
+  border-radius: 50%;
+  font-size: 0;
+  line-height: 0;
 }
 
 /* ==========================================================================
@@ -1486,7 +1248,7 @@ section{ position: relative; }
   font-family: var(--font-display);
   font-variation-settings: "wdth" 100, "wght" 420, "opsz" 24;
   color: var(--ink-2);
-  max-width: 50ch;
+  max-width: 46ch;
   margin: 0;
   font-size: var(--fs-md);
   line-height: 1.5;
@@ -1537,7 +1299,7 @@ section{ position: relative; }
 }
 .finale__kicker{
   font-family: var(--font-mono);
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   letter-spacing: .22em;
   text-transform: uppercase;
   color: var(--ink);
@@ -1548,7 +1310,6 @@ section{ position: relative; }
   transform: rotate(-2deg);
   margin-bottom: 2rem;
   box-shadow: 3px 3px 0 var(--ink);
-  font-weight: 700;
 }
 .finale__head{
   font-family: var(--font-display);
@@ -1597,118 +1358,21 @@ section{ position: relative; }
 }
 .finale.is-in .finale__head .hit::before{ transform: rotate(-1.5deg) scaleX(1); }
 
-/* email form */
-.email-form{
-  display: flex;
-  flex-wrap: wrap;
-  align-items: stretch;
-  gap: .7rem;
-  margin: 1rem 0 0;
-  max-width: 560px;
-}
-.email-form input[type="email"]{
-  flex: 1 1 240px;
-  min-width: 0;
-  padding: 1.05rem 1.2rem;
-  background: var(--paper);
-  border: 2px solid var(--ink);
-  box-shadow: 4px 4px 0 var(--ink);
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  letter-spacing: 0.04em;
-  color: var(--ink);
-  outline: none;
-  border-radius: 0;
-  transition: transform .25s var(--ease-out), box-shadow .25s var(--ease-out), background .25s var(--ease-out);
-}
-.email-form input[type="email"]::placeholder{
-  color: var(--ink);
-  opacity: 0.45;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  font-size: 0.7rem;
-}
-.email-form input[type="email"]:focus{
-  background: var(--lime);
-  transform: translate(-1px, -1px);
-  box-shadow: 5px 5px 0 var(--ink);
-}
-.email-form button{
-  font-family: var(--font-mono);
-  font-size: 0.82rem;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  font-weight: 700;
-  padding: 1.05rem 1.3rem;
-  background: var(--ink);
-  color: var(--paper);
-  border: 2px solid var(--ink);
-  box-shadow: 4px 4px 0 var(--ink);
-  cursor: pointer;
-  transition: transform .25s var(--ease-out), box-shadow .25s var(--ease-out);
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  border-radius: 0;
-}
-.email-form button:hover{
-  transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0 var(--ink);
-}
-.email-form button:active{
-  transform: translate(2px, 2px);
-  box-shadow: 0 0 0 var(--ink);
-}
-.email-form .arr{ transition: transform .25s var(--ease-out); }
-.email-form button:hover .arr{ transform: translateX(4px); }
-
-.form-success{
-  display: none;
-  padding: 1.05rem 1.3rem;
-  margin: 1rem 0 0;
-  max-width: 560px;
-  background: var(--lime);
-  border: 2px solid var(--ink);
-  box-shadow: 4px 4px 0 var(--ink);
-  font-family: var(--font-mono);
-  font-size: 0.82rem;
-  letter-spacing: 0.04em;
-  color: var(--ink);
-  font-weight: 700;
-}
-.form-success::before{
-  content: "✓ ";
-  margin-right: 4px;
-}
-.form-success em{
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-weight: 400;
-  text-transform: none;
-  letter-spacing: -0.01em;
-  font-size: 1rem;
-  display: block;
-  margin-top: 4px;
-  opacity: 0.85;
-}
-.is-sent .email-form{ display: none; }
-.is-sent .form-success{ display: block; }
-
 .cta-row{
   display: flex; flex-wrap: wrap; gap: .8rem;
   align-items: center;
-  margin-top: 1.2rem;
+  margin-top: 1rem;
 }
 .cta{
   display: inline-flex;
   align-items: center;
   gap: .7rem;
-  padding: 1rem 1.4rem;
+  padding: 1.1rem 1.5rem;
   background: var(--ink);
   color: var(--paper);
   font-family: var(--font-mono);
-  font-size: 0.82rem;
-  letter-spacing: .14em;
+  font-size: 0.85rem;
+  letter-spacing: .16em;
   text-transform: uppercase;
   text-decoration: none;
   border: 2px solid var(--ink);
@@ -1734,7 +1398,7 @@ section{ position: relative; }
   font-family: var(--font-hand);
   font-size: 1.4rem;
   color: var(--ink);
-  max-width: 26rem;
+  max-width: 20rem;
   line-height: 1.2;
   transform: rotate(-1.5deg);
   display: inline-block;
@@ -1749,10 +1413,7 @@ section{ position: relative; }
   color: var(--ink);
   padding-top: 1.5rem;
   border-top: 2px solid var(--ink);
-  font-weight: 700;
 }
-.finale__foot a{ color: var(--ink); text-decoration: none; }
-.finale__foot a:hover{ text-decoration: underline wavy var(--lime); text-underline-offset: 4px; }
 
 /* ==========================================================================
    Reduced motion
@@ -1774,10 +1435,10 @@ section{ position: relative; }
 <div class="sysbar">
   <div class="sysbar__left">
     <span class="sysbar__dot"></span>
-    <span>MEMOS · PERSISTENT BRAIN · v0.1</span>
+    <span>     </span>
   </div>
   <div class="sysbar__right">
-    PILOT · NORTHEAST · 2026
+         
   </div>
   <div class="sysbar__prog"></div>
 </div>
@@ -1788,51 +1449,69 @@ section{ position: relative; }
   <div class="hero__blob hero__blob--pink" aria-hidden="true"></div>
 
   <div class="hero__top">
-    <div class="dot-mark">MEMOS</div>
-    <div class="hero__banner">FOR FINANCE</div>
-    <div class="hero__tag-right" aria-hidden="true">claude code · for finance &amp; accounting.</div>
+    <div class="dot-mark"></div>
+    <div class="hero__banner"> </div>
+    <div aria-hidden="true"></div>
   </div>
 
-  <h1 class="hero__head" aria-label="Your firm's persistent brain.">
-    <span class="w">YOUR</span>
-    <span class="w">FIRM'S</span>
+  <h1 class="hero__head" aria-label="">
+    <span class="w"></span>
+    <span class="w"></span>
+    <br/>
+    <span class="w"></span>
     <br/>
     <span class="w">
-      <span class="hero__hit">persistent</span>
+      <span class="hero__hit">
+        
+        <svg viewBox="0 0 200 40" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M4 22 Q30 8, 55 22 T105 20 T155 24 T196 18" />
+        </svg>
+        <span class="hero__sticker">  </span>
+      </span>
     </span>
     <br/>
-    <span class="w">BRAIN.</span>
+    <span class="w w--sm"></span>
+    <span class="w w--sm"></span>
+    <br/>
+    <span class="w">
+      <span class="hero__circle hero__circle--blind">
+        
+        <svg viewBox="0 0 200 80" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M100 6 Q40 6, 10 40 Q10 72, 100 74 Q190 72, 192 42 Q188 10, 100 6 L105 4" />
+        </svg>
+      </span>
+    </span>
   </h1>
 
   <p class="hero__explain">
-    Decades of judgment, client quirks, and unwritten rules — locked inside your seniors' heads, never written down. A persistent brain that lives at the OS layer watches the tools your team already uses, learns every engagement, and turns tacit know-how into firm-wide memory.
-    <span class="hero__explain-em">Senior staff stay senior. Juniors get there faster. Nothing leaves when someone does.</span>
+           
+    <span class="hero__explain-em">         </span>
   </p>
 
   <div class="hero__foot">
     <div class="hero__scroll">
-      <span class="box">↓</span>
-      SCROLL
+      <span class="box"></span>
+       
     </div>
     <div class="hero__meta">
-      <u>secure on-prem.</u> you own the brain.
+         <u>   </u>
     </div>
   </div>
 </section>
 
 <!-- ===================== CHAPTER 01 ===== -->
-<section class="chapter js-chapter" data-bg="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1800&q=80&auto=format&fit=crop">
+<section class="chapter js-chapter" data-bg="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1800&q=80&auto=format&fit=crop">
   <div class="chapter__bg"></div>
   <div class="chapter__duo"></div>
   <div class="chapter__shade"></div>
-  <div class="chapter__tape">01 / THE TRUTH</div>
+  <div class="chapter__tape">  </div>
   <div class="chapter__inner">
-    <div class="chapter__num reveal">THE PROBLEM</div>
+    <div class="chapter__num reveal">    </div>
     <h2 class="chapter__head reveal d1">
-      FINANCE <em>isn't</em> ready to be <span class="hi hi--flip">REPLACED</span> by machines.
+         <em> </em> <span class="hi hi--flip"></span>       
     </h2>
     <p class="chapter__sub reveal d2">
-      And honestly? It shouldn't be. Your best analysts hold years of context — every client's quirks, the firm's risk tolerance, the unwritten rules. AI can't replace that. We're not trying to.
+                           
     </p>
   </div>
 </section>
@@ -1840,190 +1519,90 @@ section{ position: relative; }
 <!-- ===================== MARQUEE ===== -->
 <section class="marq-sec">
   <h3 class="marq-lead">
-    we <em>assist.</em> we <em>learn.</em> <br/> we do <span class="stamp">not</span> replace.
+       <em></em> <br/> <span class="stamp"></span>  
   </h3>
 
   <div class="marquee" aria-hidden="true">
     <div class="marquee__track">
-      <span>OBSERVES</span><span class="x">·</span>
-      <span>ASSEMBLES</span><span class="x y">·</span>
-      <span>REMEMBERS</span><span class="x">·</span>
-      <span>TRAINS</span><span class="x y">·</span>
-      <span>AUTOMATES</span><span class="x">·</span>
-      <span>ORGANIZES</span><span class="x y">·</span>
-      <span>OBSERVES</span><span class="x">·</span>
-      <span>ASSEMBLES</span><span class="x y">·</span>
-      <span>REMEMBERS</span><span class="x">·</span>
-      <span>TRAINS</span><span class="x y">·</span>
-      <span>AUTOMATES</span><span class="x">·</span>
-      <span>ORGANIZES</span><span class="x y">·</span>
+      <span></span><span class="x"></span>
+      <span> </span><span class="x y"></span>
+      <span> </span><span class="x"></span>
+      <span></span><span class="x y"></span>
+      <span></span><span class="x"></span>
+      <span></span><span class="x y"></span>
+      <span></span><span class="x"></span>
+      <span> </span><span class="x y"></span>
+      <span> </span><span class="x"></span>
+      <span></span><span class="x y"></span>
+      <span></span><span class="x"></span>
+      <span></span><span class="x y"></span>
     </div>
   </div>
 
   <div class="marquee marquee--rev" aria-hidden="true">
     <div class="marquee__track">
-      <span>every client</span><span class="dot"></span>
-      <span>every process</span><span class="dot"></span>
-      <span>every keystroke</span><span class="dot"></span>
-      <span>the firm's instincts</span><span class="dot"></span>
-      <span>the firm's tone</span><span class="dot"></span>
-      <span>the unwritten rules</span><span class="dot"></span>
-      <span>every client</span><span class="dot"></span>
-      <span>every process</span><span class="dot"></span>
-      <span>every keystroke</span><span class="dot"></span>
-      <span>the firm's instincts</span><span class="dot"></span>
-      <span>the firm's tone</span><span class="dot"></span>
-      <span>the unwritten rules</span><span class="dot"></span>
+      <span> </span><span class="dot"></span>
+      <span></span><span class="dot"></span>
+      <span> </span><span class="dot"></span>
+      <span> </span><span class="dot"></span>
+      <span></span><span class="dot"></span>
+      <span> </span><span class="dot"></span>
+      <span> </span><span class="dot"></span>
+      <span></span><span class="dot"></span>
+      <span> </span><span class="dot"></span>
+      <span> </span><span class="dot"></span>
+      <span></span><span class="dot"></span>
+      <span> </span><span class="dot"></span>
     </div>
   </div>
 
   <div class="marquee marquee--pink" aria-hidden="true">
     <div class="marquee__track">
-      <span>YOUR PROCESS</span><span class="star">★</span>
-      <span>YOUR CLIENTS</span><span class="star">★</span>
-      <span>YOUR INSTINCTS</span><span class="star">★</span>
-      <span>YOUR AI</span><span class="star">★</span>
-      <span>YOUR PROCESS</span><span class="star">★</span>
-      <span>YOUR CLIENTS</span><span class="star">★</span>
-      <span>YOUR INSTINCTS</span><span class="star">★</span>
-      <span>YOUR AI</span><span class="star">★</span>
+      <span>    </span><span class="star"></span>
+      <span>    </span><span class="star"></span>
+      <span>    </span><span class="star"></span>
+      <span>    </span><span class="star"></span>
+      <span>    </span><span class="star"></span>
+      <span>    </span><span class="star"></span>
+      <span>    </span><span class="star"></span>
+      <span>    </span><span class="star"></span>
     </div>
   </div>
 
   <p class="marq-foot">
-    the brain that builds itself — quietly, while your team works.
+              
   </p>
 </section>
 
 <!-- ===================== STARK ===== -->
 <section class="stark">
   <div class="wrap stark__inner">
-    <p class="stark__eyebrow">ONE LAYER · FIRM-WIDE</p>
-    <h2 class="stark__word">MEMORY<span class="dot">.</span></h2>
-    <p class="stark__caption">not just your data — the way your firm thinks about it.</p>
+    <p class="stark__eyebrow">    </p>
+    <h2 class="stark__word"><span class="dot"></span></h2>
   </div>
 </section>
 
-<!-- ===================== SCENE 1: IT WATCHES ===== -->
-<section class="scene js-scene" aria-label="It watches">
+<!-- ===================== SCENE: COMPUTER SCREEN → CHAT ZOOM ===== -->
+<section class="scene js-scene" aria-label="">
   <div class="scene__stage">
 
     <div class="scene__lead">
-      <h2 class="scene__lead-word">IT WATCHES<span class="dot">.</span></h2>
-      <p class="scene__lead-caption">SITS BETWEEN EVERY PROGRAM YOUR TEAM USES — EXCEL · QUICKBOOKS · PROSYSTEM FX · YOUR DMS. LEARNS THE WAY YOUR FIRM ACTUALLY WORKS.</p>
+      <h2 class="scene__lead-word"><span class="dot"></span> <span class="dot"></span></h2>
+      <p>    </p><p> <span class="flip-word"></span>     </p>
     </div>
 
     <div class="scene__frame">
-      <div class="screen screen--watch">
+      <div class="screen screen--watch" style="aspect-ratio: 2730 / 2080; --split: 59.71%;">
 
         <div class="screen__work" aria-hidden="true">
-          <div class="os-mock">
-            <span class="os-mock__eye">● OBSERVING</span>
-
-            <div class="os-mock__win os-mock__win--excel">
-              <div class="os-mock__win-bar">
-                <i></i><i></i><i></i>
-                <span class="os-mock__win-title">acme_q1_recon.xlsx</span>
-              </div>
-              <div class="os-mock__win-body">
-                <div class="os-grid">
-                  <div class="h">ACCOUNT</div><div class="h num">GL</div><div class="h num">BANK</div><div class="h num">DIFF</div>
-                  <div>1010 Cash</div><div class="num">412,802</div><div class="num">412,802</div><div class="num pos">0</div>
-                  <div>1020 AR</div><div class="num">88,140</div><div class="num">88,140</div><div class="num pos">0</div>
-                  <div>1030 PP&amp;E</div><div class="num">1.2M</div><div class="num">1.2M</div><div class="num pos">0</div>
-                  <div>2010 AP</div><div class="num">62,450</div><div class="num">62,890</div><div class="num neg">(440)</div>
-                  <div>3000 Equity</div><div class="num">980,012</div><div class="num">980,012</div><div class="num pos">0</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="os-mock__win os-mock__win--qbo">
-              <div class="os-mock__win-bar">
-                <i></i><i></i><i></i>
-                <span class="os-mock__win-title">QBO · ledger · acme corp</span>
-              </div>
-              <div class="os-mock__win-body">
-                <div class="os-ledger-row"><span><span class="acc">5/12</span> Vendor pmt — Stripe</span><span class="num">$1,240.00</span></div>
-                <div class="os-ledger-row"><span><span class="acc">5/13</span> Payroll run</span><span class="num">$48,800.00</span></div>
-                <div class="os-ledger-row"><span><span class="acc">5/14</span> AR receipt — Globex</span><span class="num">$22,500.00</span></div>
-                <div class="os-ledger-row"><span><span class="acc">5/15</span> Bank fee</span><span class="num">$45.00</span></div>
-                <div class="os-ledger-row"><span><span class="acc">5/16</span> Vendor pmt — AWS</span><span class="num">$3,802.40</span></div>
-                <div class="os-ledger-row"><span><span class="acc">5/17</span> AR receipt — Initech</span><span class="num">$9,000.00</span></div>
-              </div>
-            </div>
-
-            <div class="os-mock__win os-mock__win--pdf">
-              <div class="os-mock__win-bar">
-                <i></i><i></i><i></i>
-                <span class="os-mock__win-title">workpaper · cash recon.pdf</span>
-              </div>
-              <div class="os-mock__win-body os-doc">
-                <h6>CASH RECONCILIATION</h6>
-                <div class="line"></div>
-                <div class="line short"></div>
-                <div class="line"></div>
-                <div class="line shorter"></div>
-                <div class="line short"></div>
-                <span class="stamp">DRAFT</span>
-              </div>
-            </div>
-
-            <div class="os-mock__win os-mock__win--mail">
-              <div class="os-mock__win-bar">
-                <i></i><i></i><i></i>
-                <span class="os-mock__win-title">mail · inbox</span>
-              </div>
-              <div class="os-mock__win-body os-mail">
-                <div class="em"><span class="from">CFO, ACME</span><span class="sub">re: april package?</span><span class="when">9:42</span></div>
-                <div class="em"><span class="from">Bank ops</span><span class="sub">may statement attached</span><span class="when">8:15</span></div>
-                <div class="em"><span class="from">M. Patel</span><span class="sub">tie-out review notes</span><span class="when">tue</span></div>
-                <div class="em"><span class="from">Filing alerts</span><span class="sub">Q1 estimated due 6/15</span><span class="when">mon</span></div>
-              </div>
-            </div>
-
-            <svg class="os-mock__rays" preserveAspectRatio="none" viewBox="0 0 100 100" aria-hidden="true">
-              <line x1="92" y1="6" x2="32" y2="30"/>
-              <line x1="92" y1="6" x2="65" y2="42"/>
-              <line x1="92" y1="6" x2="30" y2="70"/>
-              <line x1="92" y1="6" x2="70" y2="74"/>
-            </svg>
-          </div>
+          <img src="assets/learn-left-pabel.png" alt="" />
         </div>
 
         <div class="screen__divider" aria-hidden="true"></div>
 
         <div class="screen__chat">
-          <div class="chat-chrome">
-            <div class="dots"><i></i><i></i><i></i></div>
-            <span class="chat-brand">memos</span>
-            <span class="chat-title">acme · may reconciliations</span>
-            <span class="chat-status">live</span>
-          </div>
-          <div class="chat-body">
-            <div class="cmsg cmsg--ai">
-              <div class="cmsg__who">memos</div>
-              saw 6 ACME reconciliations this month — same shape, same accounts, same sign-off. pattern detected.
-              <div class="cmsg__card">
-                <div class="cmsg__card-icon">→</div>
-                <div>
-                  <div class="cmsg__card-name">draft recurring memo</div>
-                  <div class="cmsg__card-meta">workpaper · monthly · auto</div>
-                </div>
-              </div>
-            </div>
-            <div class="cmsg cmsg--user">
-              yes — use last month's tone.
-            </div>
-            <div class="cmsg cmsg--ai">
-              <div class="cmsg__who">memos</div>
-              drafting. flagged $440 AP variance for partner review.
-              <div class="cmsg__code">→ memos/acme/2026-may-recon.md</div>
-            </div>
-          </div>
-          <div class="chat-input">
-            <div class="chat-field"></div>
-            <div class="chat-send"></div>
-          </div>
+          <img src="assets/learn-right-panel.png" alt="" class="img-base" />
+          <img src="assets/zoomin blur.png" alt="" class="img-blur" />
         </div>
 
       </div>
@@ -2031,116 +1610,25 @@ section{ position: relative; }
   </div>
 </section>
 
-<!-- ===================== SCENE 2: IT LEARNS ===== -->
-<section class="scene js-scene" aria-label="It learns">
+<section class="scene js-scene" aria-label="">
   <div class="scene__stage">
 
     <div class="scene__lead">
-      <h2 class="scene__lead-word">IT LEARNS<span class="dot">.</span></h2>
-      <p class="scene__lead-caption">DOWN TO THE CLIENT LEVEL. DOWN TO THE PROCESS LEVEL. DOWN TO THE WAY YOUR SENIORS THINK.</p>
+      <h2 class="scene__lead-word"> <span class="dot"></span></h2>
+      <p class="scene__lead-caption">      </p>
     </div>
 
     <div class="scene__frame">
       <div class="screen">
 
         <div class="screen__work" aria-hidden="true">
-          <div class="flow-mock">
-
-            <div class="flow-mock__sidebar">
-              <h4>Client memory</h4>
-              <p class="client">ACME Corp.</p>
-              <ul>
-                <li>monthly recs by 15th</li>
-                <li>cash sched: tighten language</li>
-                <li>partner: M. Patel</li>
-                <li>materiality: $5,000</li>
-                <li>file format: .xlsx + signed PDF</li>
-                <li>review SLA: 48h</li>
-              </ul>
-              <p class="meta">learned over 14 mo · 312 sessions</p>
-            </div>
-
-            <div class="flow-mock__col">
-              <h5>Draft</h5>
-              <div class="flow-mock__card flow-mock__card--lime">
-                Cash schedule
-                <div class="meta">prefilled · ready</div>
-                <div class="who">memos</div>
-              </div>
-              <div class="flow-mock__card">
-                AR aging
-                <div class="meta">workpaper</div>
-                <div class="who">memos</div>
-              </div>
-              <div class="flow-mock__card">
-                Accruals memo
-                <div class="meta">drafting</div>
-                <div class="who">memos</div>
-              </div>
-            </div>
-
-            <div class="flow-mock__col">
-              <h5>Review</h5>
-              <div class="flow-mock__card flow-mock__card--yellow">
-                Bank recs
-                <div class="meta">$440 variance flagged</div>
-                <div class="who">M. Patel</div>
-              </div>
-              <div class="flow-mock__card">
-                Tax provision
-                <div class="meta">2 questions</div>
-                <div class="who">M. Patel</div>
-              </div>
-            </div>
-
-            <div class="flow-mock__col">
-              <h5>File</h5>
-              <div class="flow-mock__card flow-mock__card--pink">
-                Q1 estimates
-                <div class="meta">filed · 6/14</div>
-              </div>
-              <div class="flow-mock__card">
-                April package
-                <div class="meta">sent to CFO</div>
-              </div>
-            </div>
-
-          </div>
+          <img src="assets/screenshot teach work.jpg" alt="" />
         </div>
 
         <div class="screen__divider" aria-hidden="true"></div>
 
         <div class="screen__chat">
-          <div class="chat-chrome">
-            <div class="dots"><i></i><i></i><i></i></div>
-            <span class="chat-brand">memos</span>
-            <span class="chat-title">acme · monthly close</span>
-            <span class="chat-status">learning</span>
-          </div>
-          <div class="chat-body">
-            <div class="cmsg cmsg--ai">
-              <div class="cmsg__who">memos</div>
-              ACME prefers monthly recs by the 15th. queued the workpapers and pre-filled the standard schedules.
-              <div class="cmsg__card">
-                <div class="cmsg__card-icon">★</div>
-                <div>
-                  <div class="cmsg__card-name">applied last quarter's review</div>
-                  <div class="cmsg__card-meta">M. Patel · cash sched note</div>
-                </div>
-              </div>
-            </div>
-            <div class="cmsg cmsg--user">
-              what changed from last quarter?
-            </div>
-            <div class="cmsg cmsg--ai">
-              <div class="cmsg__who">memos</div>
-              applied senior PM's note: "tighten cash sched explanations." 3 line items reworded. nothing else changed.
-            </div>
-          </div>
-          <div class="chat-input">
-            <div class="chat-field"></div>
-            <div class="chat-send"></div>
-          </div>
+          <img src="assets/teach chat panel.png" alt="" />
         </div>
 
       </div>
@@ -2149,18 +1637,18 @@ section{ position: relative; }
 </section>
 
 <!-- ===================== CHAPTER 02 ===== -->
-<section class="chapter js-chapter" data-bg="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1800&q=80&auto=format&fit=crop">
+<section class="chapter js-chapter" data-bg="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1800&q=80&auto=format&fit=crop">
   <div class="chapter__bg"></div>
   <div class="chapter__duo chapter__duo--alt"></div>
   <div class="chapter__shade"></div>
-  <div class="chapter__tape" style="background: var(--pink); color: var(--paper);">02 / THE OUTCOME</div>
+  <div class="chapter__tape" style="background: var(--pink); color: var(--paper);">    </div>
   <div class="chapter__inner">
-    <div class="chapter__num reveal" style="background: var(--pink); color: var(--paper);">THE RESULT</div>
+    <div class="chapter__num reveal" style="background: var(--pink); color: var(--paper);">  </div>
     <h2 class="chapter__head reveal d1">
-      the <span class="hi">DAY BEFORE</span> <em>filing</em> — but every day.
+        <em></em>   <span class="hi"></span>    
     </h2>
     <p class="chapter__sub reveal d2">
-      Repeated workflows automated. Data organized with one command. Gaps surfaced before they cost you. Your team focuses on judgment — the work that actually matters.
+                      
     </p>
   </div>
 </section>
@@ -2168,32 +1656,32 @@ section{ position: relative; }
 <!-- ===================== BEATS ===== -->
 <section class="beats">
   <div class="wrap">
-    <div class="beats__tag">WHAT IT DOES</div>
+    <div class="beats__tag">       </div>
 
     <div class="beat js-fade">
-      <div><span class="beat__n-badge">1</span></div>
+      <div><span class="beat__n-badge"></span></div>
       <div>
-        <h3 class="beat__h">OBSERVES <em>quietly</em></h3>
-        <p class="beat__p">Sits at the OS layer between every program your team already uses. Watches the patterns. Maps the workflows. <mark>never gets in the way.</mark></p>
-        <div class="beat__handnote">zero workflow disruption.</div>
+        <h3 class="beat__h">  <em> </em></h3>
+        <p class="beat__p">                 <mark> </mark>    </p>
+        <div class="beat__handnote">      </div>
       </div>
     </div>
 
     <div class="beat js-fade">
-      <div><span class="beat__n-badge">2</span></div>
+      <div><span class="beat__n-badge"></span></div>
       <div>
-        <h3 class="beat__h"><em>learns</em> EVERY <span class="hi">CLIENT</span></h3>
-        <p class="beat__p">Every firm has its tone. Every client has their quirks. The brain builds memory down to the level of each engagement and each decision — the kind of context juniors take five years to absorb. <mark>your firm's IP, distilled.</mark></p>
-        <div class="beat__handnote">it remembers what your seniors already know.</div>
+        <h3 class="beat__h"><em> </em>   <span class="hi"> </span></h3>
+        <p class="beat__p">                   <mark> </mark></p>
+        <div class="beat__handnote">      </div>
       </div>
     </div>
 
     <div class="beat js-fade">
-      <div><span class="beat__n-badge">3</span></div>
+      <div><span class="beat__n-badge"></span></div>
       <div>
-        <h3 class="beat__h">assists. <em>not</em> replaces.</h3>
-        <p class="beat__p">Surfaces gaps. Trains new hires. Drafts the workpapers. Your senior staff review and judge — <mark>that's the work that matters.</mark> Humans on top, always.</p>
-        <div class="beat__handnote">your seniors stay senior.</div>
+        <h3 class="beat__h"> <em></em>     </h3>
+        <p class="beat__p">    <mark></mark>             </p>
+        <div class="beat__handnote">      </div>
       </div>
     </div>
   </div>
@@ -2202,40 +1690,25 @@ section{ position: relative; }
 <!-- ===================== FINALE ===== -->
 <section class="finale js-chapter">
   <div class="wrap">
-    <div class="finale__kicker">PILOT PARTNERS · NORTHEAST CPA + FINANCE FIRMS</div>
+    <div class="finale__kicker">   </div>
     <h2 class="finale__head">
-      <span class="word">BUILD</span>
-      <span class="word">YOUR</span>
-      <span class="word">PERSISTENT</span>
-      <span class="word hit">brain</span>
-      <span class="word">WITH</span>
-      <span class="word">US.</span>
+      <span class="word"></span>
+      <span class="word"></span>
+      <span class="word hit"></span>
+      <span class="word"></span>
+      <span class="word"></span>
+      <span class="word"> </span>
     </h2>
-
-    <div id="email-cta">
-      <form class="email-form" id="memos-form" novalidate>
-        <input type="email" name="email" placeholder="your work email" required autocomplete="email" />
-        <button type="submit">
-          GET PILOT ACCESS
-          <span class="arr">→</span>
-        </button>
-      </form>
-      <div class="form-success" role="status" aria-live="polite">
-        on the list. <em>we'll be in touch within 48 hours.</em>
-      </div>
-    </div>
-
     <div class="cta-row">
-      <a class="cta cta--ghost" href="mailto:team@memos.ai?subject=MEMOS%20one-pager">read the one-pager <span class="arr">→</span></a>
+      <a class="cta cta--lime" href="#">   <span class="arr"></span></a>
+      <a class="cta cta--ghost" href="#">  </a>
     </div>
-
     <div class="finale__handnote">
-      we're partnering with a small group of firms this quarter. say hi before we close.
+             
     </div>
-
     <div class="finale__foot">
-      <div>MEMOS · BOSTON · 2026</div>
-      <div><a href="mailto:team@memos.ai">TEAM@MEMOS.AI</a></div>
+      <div>      </div>
+      <div>         </div>
     </div>
   </div>
 </section>
@@ -2320,103 +1793,99 @@ section{ position: relative; }
     }
   }
 
-  // SCENE: scroll-zoom into chat panel
-  function initSceneZoom(){
-    const scenes = document.querySelectorAll('.js-scene');
-    if(!scenes.length) return;
+function initSceneZoom(){
+  const scenes = document.querySelectorAll('.js-scene');
+  if(!scenes.length) return;
 
-    scenes.forEach(scene => {
-      const stage = scene.querySelector('.scene__stage');
-      const chat  = scene.querySelector('.screen__chat');
-      if(!chat || !stage) return;
+  scenes.forEach(scene => {
+    const stage = scene.querySelector('.scene__stage');
+    const chat  = scene.querySelector('.screen__chat');
+    if(!chat || !stage) return;
 
-      const prevZoom = scene.style.getPropertyValue('--p-zoom');
-      scene.style.setProperty('--p-zoom', '0');
+    // Temporarily remove zoom to measure the base bounding box accurately
+    const prevZoom = scene.style.getPropertyValue('--p-zoom');
+    scene.style.setProperty('--p-zoom', '0');
 
-      const r = chat.getBoundingClientRect();
-      const stageRect = stage.getBoundingClientRect();
-      const vw = window.innerWidth;
-      const vh = window.innerHeight;
+    const r = chat.getBoundingClientRect();
+    const stageRect = stage.getBoundingClientRect();
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
 
-      scene.style.setProperty('--p-zoom', prevZoom || '0');
+    // Restore the current zoom progress
+    scene.style.setProperty('--p-zoom', prevZoom || '0');
 
-      const idealLeft = r.left - stageRect.left;
-      const idealTop  = r.top - stageRect.top;
+    // Calculate position relative to the sticky stage
+    const idealLeft = r.left - stageRect.left;
+    const idealTop  = r.top - stageRect.top;
 
-      const scaleX = (vw * 0.8) / r.width;
-      const scaleY = (vh * 0.8) / r.height;
-      const targetScale = Math.min(scaleX, scaleY);
-      const scaleExtra = targetScale - 1;
+    // Calculate the target scale to fit 80% of the screen limits
+    const scaleX = (vw * 0.8) / r.width;
+    const scaleY = (vh * 0.8) / r.height;
 
-      const txPx = (vw / 2) - (idealLeft + r.width / 2);
-      const tyPx = (vh / 2) - (idealTop + r.height / 2);
+    // Math.min forces it to stop scaling when it hits the 80% boundary
+    const targetScale = Math.min(scaleX, scaleY);
+    const scaleExtra = targetScale - 1;
 
-      scene.style.setProperty('--chat-scale', scaleExtra.toFixed(4));
-      scene.style.setProperty('--chat-tx', txPx.toFixed(2) + 'px');
-      scene.style.setProperty('--chat-ty', tyPx.toFixed(2) + 'px');
-    });
+    // Calculate exact pixel translations to center it
+    const txPx = (vw / 2) - (idealLeft + r.width / 2);
+    const tyPx = (vh / 2) - (idealTop + r.height / 2);
+
+    // Notice we are setting these on the specific `scene` now, not the document root!
+    scene.style.setProperty('--chat-scale', scaleExtra.toFixed(4));
+    scene.style.setProperty('--chat-tx', txPx.toFixed(2) + 'px');
+    scene.style.setProperty('--chat-ty', tyPx.toFixed(2) + 'px');
+  });
+}
+
+initSceneZoom();
+window.addEventListener('resize', initSceneZoom, { passive: true });
+window.addEventListener('load',   initSceneZoom);
+
+
+if(!prefersReduced){
+  const scenes = document.querySelectorAll('.js-scene');
+  if(scenes.length){
+    let ticking = false;
+    const update = () => {
+      scenes.forEach(scene => {
+        const rect  = scene.getBoundingClientRect();
+        const vh    = window.innerHeight;
+        const total = rect.height - vh;
+
+        // Calculate overall scroll progress (0 to 1) for this specific scene
+        const p = total > 0 ? Math.max(0, Math.min(1, (-rect.top) / total)) : 0;
+
+        // Directly map the scroll progress to the zoom
+        scene.style.setProperty('--p', p.toFixed(4));
+        scene.style.setProperty('--p-zoom', p.toFixed(4));
+      });
+      ticking = false;
+    };
+
+    const onScroll = () => {
+      if(!ticking){ requestAnimationFrame(update); ticking = true; }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', update,   { passive: true });
+    update();
   }
+}
 
-  initSceneZoom();
-  window.addEventListener('resize', initSceneZoom, { passive: true });
-  window.addEventListener('load',   initSceneZoom);
-
-  if(!prefersReduced){
-    const scenes = document.querySelectorAll('.js-scene');
-    if(scenes.length){
-      let ticking = false;
-      const update = () => {
-        scenes.forEach(scene => {
-          const rect  = scene.getBoundingClientRect();
-          const vh    = window.innerHeight;
-          const total = rect.height - vh;
-          const p = total > 0 ? Math.max(0, Math.min(1, (-rect.top) / total)) : 0;
-          scene.style.setProperty('--p', p.toFixed(4));
-          scene.style.setProperty('--p-zoom', p.toFixed(4));
-        });
-        ticking = false;
-      };
-      const onScroll = () => {
-        if(!ticking){ requestAnimationFrame(update); ticking = true; }
-      };
-      window.addEventListener('scroll', onScroll, { passive: true });
-      window.addEventListener('resize', update,   { passive: true });
-      update();
-    }
-  }
-
-  // Hero replay on tap
   const hero = document.querySelector('.hero');
   if(hero && !prefersReduced){
     let lockedUntil = 0;
     const replay = () => {
       const now = performance.now();
-      if(now < lockedUntil) return;
-      lockedUntil = now + 400;
+      if(now < lockedUntil) return;         // debounce rapid taps
+      lockedUntil = now + 400;              // short cooldown
       hero.classList.remove('play');
+      // force reflow so the removed animations are flushed before re-adding
       void hero.offsetWidth;
       hero.classList.add('play');
     };
+    // pointerdown fires on the first touch (and on mouse down) — so it
+    // triggers at the START of a tap or scroll gesture, exactly what was asked.
     hero.addEventListener('pointerdown', replay, { passive: true });
-  }
-
-  // Email form: capture and show success
-  const wrap = document.getElementById('email-cta');
-  const form = document.getElementById('memos-form');
-  if(form && wrap){
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const email = form.querySelector('input[type="email"]').value.trim();
-      if(!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        const inp = form.querySelector('input[type="email"]');
-        inp.style.background = '#ffd6d6';
-        inp.focus();
-        setTimeout(()=>{ inp.style.background = ''; }, 1200);
-        return;
-      }
-      try { localStorage.setItem('memos_pilot_email', email); } catch(_){}
-      wrap.classList.add('is-sent');
-    });
   }
 })();
 </script>

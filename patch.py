@@ -3,7 +3,7 @@ import re
 with open('preview-312.html', 'r') as f:
     preview = f.read()
 
-with open('index.html', 'r') as f:
+with open('index_teach.html', 'r') as f:
     index = f.read()
 
 # 1. Extract CSS
@@ -38,7 +38,7 @@ new_js = js_match.group(1)
 # Replace in index
 index = re.sub(r'  // Compute exact chat zoom vars from rendered layout.*?if\(hero && !prefersReduced\)\{', new_js + '  const hero = document.querySelector(\'.hero\');\n  if(hero && !prefersReduced){', index, flags=re.DOTALL)
 
-with open('index.html', 'w') as f:
+with open('index_teach.html', 'w') as f:
     f.write(index)
 
 print("Patched successfully")
